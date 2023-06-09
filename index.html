@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data Entry Form</title>
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Data Entry Form</h2>
+    <form id="dataEntryForm" action="newPage.html" method="get">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("dataEntryForm").addEventListener("submit", function (event) {
+            var name = document.getElementById("name").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                event.preventDefault(); // prevent form submission
+            } else {
+                // Store the name in sessionStorage
+                sessionStorage.setItem("name", name);
+            }
+        });
+    </script>
+</body>
+
+</html>
